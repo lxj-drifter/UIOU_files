@@ -50,8 +50,8 @@ class ComputeLoss:
                 pwh = (pwh.sigmoid() * 2) ** 2 * anchors[i]
                 pbox = torch.cat((pxy, pwh), 1)  # predicted box
 
-				# --------------------------------------------------------------------------------------
-				# part of change
+		# ----------------------------------------------------------------------------------------------------
+		# part of change
                 iou = bbox_iou(pbox, tbox[i], epoch, CIoU=True, Focal=False, scale=False)
                 if type(iou) is tuple:
                     if len(iou) == 2:
@@ -65,7 +65,7 @@ class ComputeLoss:
                 else:
                     lbox += (1.0 - iou.squeeze()).mean()  # iou loss
                     iou = iou.squeeze()
-				# --------------------------------------------------------------------------------------
+		# -----------------------------------------------------------------------------------------------------
 
                 # Objectness
                 iou = iou.detach().clamp(0).type(tobj.dtype)
