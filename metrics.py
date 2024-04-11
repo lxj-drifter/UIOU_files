@@ -48,7 +48,7 @@ def bbox_iou(box1, box2, epoch, xywh=True, GIoU=False, DIoU=False, CIoU=False, S
         w1, h1 = b1_x2 - b1_x1, (b1_y2 - b1_y1).clamp(eps)
         w2, h2 = b2_x2 - b2_x1, (b2_y2 - b2_y1).clamp(eps)
     
-	# ---------------------------------------------------------------------------------------
+    # ----------------------------------------------------------------------------------------------------------------
     # UIoU
     if UIoU:
         # define the center point for scaling
@@ -77,7 +77,7 @@ def bbox_iou(box1, box2, epoch, xywh=True, GIoU=False, DIoU=False, CIoU=False, S
         b1_x1, b1_x2, b1_y1, b1_y2 = bb1_x1, bb1_x2, bb1_y1, bb1_y2
         b2_x1, b2_x2, b2_y1, b2_y2 = bb2_x1, bb2_x2, bb2_y1, bb2_y2
         CIoU = True
-	# ----------------------------------------------------------------------------------------
+    # ---------------------------------------------------------------------------------------------------------------
 
     # Intersection area
     inter = (b1_x2.minimum(b2_x2) - b1_x1.maximum(b2_x1)).clamp(0) * \
